@@ -21,14 +21,10 @@ import {
   ComboboxList,
   ComboboxOption,
 } from "@reach/combobox"
-import { formatRelative } from "date-fns";
-
 import "@reach/combobox/styles.css";
-
 import mapStyles from './mapStyles.js'
 
 const markerURL = `http://localhost:3000/markers/`
-const inputValue = document.querySelector('.searching')
 const libraries = ["places"];
 const mapContainerStyle = {
   width: '100vw',
@@ -41,6 +37,7 @@ const center = {
 const options = {
   styles: mapStyles
 }
+
 export default function App() {
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
@@ -66,24 +63,7 @@ export default function App() {
     })
     .then(response => response.json())
     return false
-    // .then(console.log(postMarkers))
   }
-
-  const saveMarker = (marker) => {
-    console.log(marker)
-    fetch(markerURL+selected.id, {
-      method: "PATCH",
-      headers: {
-        'Content-Type': "application/json"
-      },
-      body: JSON.stringify(marker)
-    })
-    .then(response => response.json())
-    return false
-  }
-  // const onMapLoad = useCallback((map) => {
-  //   mapRef.current = map;
-  // }, []);
 
   const removeMarkerFromMap = (event) => {
     const id = event.target.parentNode.id
@@ -122,30 +102,9 @@ export default function App() {
         return marker
       }
     })
-    // setMarkers(newMarkers)
-    setMarkers(prev => {
-      const  copiedMarkers = JSON.parse(JSON.stringify(prev))
-      copiedMarkers.forEach(marker => {
-        if(marker.id === id){
-          marker.description = textValue
-          saveMarker(marker)
-        }
-      })
-      return copiedMarkers
-    })
-
-    // console.log("selectedID", selected.id)
-    // console.log("eventTarget", target.value)
-    // fetch(markerURL + [0].id, {
-    //   method: 'PUT', 
-    //   headers: {
-    //     "content-type": "application/json"
-    //   }, 
-    //   body: JSON.stringify({
-    //     event
-    //   })
-    // })
+    setMarkers(newMarkers)
   }
+
   const mapRef = useRef();
   const onMapLoad = useCallback((map) => {
     mapRef.current = map;
@@ -317,4 +276,3 @@ function Search({ panTo }) {
     </div>
   );
 }
-
