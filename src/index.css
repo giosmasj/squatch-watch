@@ -11,3 +11,53 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+h1 {
+  position: absolute;
+  top: .4rem;
+  left: 46%;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  color: #281414;
+  z-index: 10;
+  margin: auto;
+  padding: .5rem;
+  width: 45%;
+  left: 28%;
+}
+/* 
+span {
+  align-self: center;
+  display: flex;
+  position: absolute;
+} */
+
+.search {
+  position: absolute;
+  top: 4rem;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 350px;
+  z-index: 10;
+}
+
+.search input {
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  width: 100%;
+}
+
+.locate {
+  position: absolute;
+  top: 5.5rem;
+  left: 1rem;
+  background: none;
+  z-index: 10;
+}
+
+.locate img {
+  width: 30px;
+  cursor: pointer;
+}
