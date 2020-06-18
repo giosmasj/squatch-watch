@@ -112,7 +112,7 @@ export default function App() {
   
   const panTo = useCallback(({lat, lng}) => {
     mapRef.current.panTo({lat, lng});
-    mapRef.current.setZoom(14)
+    mapRef.current.setZoom(11)
   }, [])
   
   if (loadError) return "Error loading maps"
@@ -135,7 +135,7 @@ export default function App() {
 
   <GoogleMap
     mapContainerStyle={mapContainerStyle}
-    zoom={10}
+    zoom={11}
     center={center}
     options={options}
     onClick={onMapClick}
